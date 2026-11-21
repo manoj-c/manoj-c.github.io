@@ -1,0 +1,95 @@
+---
+import { publications, profile } from '../data/portfolio';
+---
+
+<section id="publications" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">Peer-Reviewed Journals &amp; Conferences</p>
+      </div>
+      <a href={profile.scholar} target="_blank" rel="noopener noreferrer" class="scholar-link">
+        View on Google Scholar →
+      </a>
+    </div>
+
+    <div class="pub-list">
+      {publications.map((pub) => (
+        <article class="card pub-card">
+          <div class="pub-left">
+            <span class="pub-date">{pub.date}</span>
+            <span class="badge badge-neutral">{pub.type}</span>
+          </div>
+          <div class="pub-right">
+            <h3 class="pub-title">{pub.title}</h3>
+            <p class="pub-venue">{pub.venue}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scholar-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .pub-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .pub-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .pub-date {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .pub-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary);
+  }
+
+  .pub-venue {
+    margin: 0.3rem 0 0;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .pub-card {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .pub-left {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+</style>

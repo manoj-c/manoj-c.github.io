@@ -1,0 +1,141 @@
+---
+import { experiences } from '../data/portfolio';
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Experience</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      {experiences.map((exp) => (
+        <article class="card exp-card">
+          <div class="exp-top">
+            <div>
+              <h3 class="exp-role">{exp.role}</h3>
+              <p class="exp-company">{exp.company}</p>
+            </div>
+            <span class="exp-period">{exp.period}</span>
+          </div>
+
+          <p class="exp-summary">{exp.summary}</p>
+
+          <div class="exp-tags">
+            {exp.tags.map((tag) => (
+              <span class="badge badge-neutral">{tag}</span>
+            ))}
+          </div>
+
+          <details class="exp-details" open={exp.expandedByDefault}>
+            <summary class="toggle-bullets-btn">
+              <span class="label-closed">Show details ({exp.bullets.length})</span>
+              <span class="label-open">Hide details</span>
+            </summary>
+            <ul class="exp-bullets">
+              {exp.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </details>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .exp-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem 1rem;
+  }
+
+  .exp-role {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .exp-company {
+    margin: 0.15rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .exp-summary {
+    margin: 0.85rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .exp-details {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  .toggle-bullets-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .toggle-bullets-btn::-webkit-details-marker {
+    display: none;
+  }
+
+  .exp-details[open] .label-closed {
+    display: none;
+  }
+
+  .exp-details:not([open]) .label-open {
+    display: none;
+  }
+
+  .exp-bullets {
+    margin: 0.85rem 0 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.925rem;
+  }
+
+  .exp-bullets li::marker {
+    color: var(--accent);
+  }
+</style>

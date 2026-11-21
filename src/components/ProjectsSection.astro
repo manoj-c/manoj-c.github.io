@@ -1,0 +1,98 @@
+---
+import { projects } from '../data/portfolio';
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Theses &amp; Projects</h2>
+        <p class="section-subtitle">Graduate Research &amp; Engineering Systems</p>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <article class="card project-card">
+          <div class="project-meta">
+            <span class="badge">{project.category}</span>
+          </div>
+
+          <h3 class="project-title">{project.title}</h3>
+          <p class="project-desc">{project.description}</p>
+
+          <ul class="project-highlights">
+            {project.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+          <div class="project-tech">
+            {project.tech.map((t) => (
+              <span class="badge badge-neutral">{t}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-meta {
+    margin-bottom: 0.75rem;
+  }
+
+  .project-title {
+    margin: 0;
+    font-size: 1.075rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text-primary);
+  }
+
+  .project-desc {
+    margin: 0.65rem 0 0;
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+  }
+
+  .project-highlights {
+    margin: 0.85rem 0 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .project-highlights li::marker {
+    color: var(--accent);
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1.15rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

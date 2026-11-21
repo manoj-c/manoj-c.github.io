@@ -1,0 +1,56 @@
+---
+import { profile } from '../data/portfolio';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-info">
+      <p class="footer-name">{profile.name}</p>
+      <p class="footer-copy">© {year} · Built with Astro</p>
+    </div>
+
+    <div class="footer-links">
+      <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <span aria-hidden="true">·</span>
+      <a href={profile.scholar} target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0 3.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .footer-copy {
+    margin: 0.2rem 0 0;
+    font-size: 0.8125rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+</style>
